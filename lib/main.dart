@@ -1,3 +1,4 @@
+import 'package:corona_stats/ui/country_list/country_list_screen.dart';
 import 'package:corona_stats/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'utils/extensions.dart';
@@ -20,6 +21,6 @@ TextTheme _appTextTheme(ThemeData base) {
 void main() {
   runApp(MaterialApp(
     theme: _appTheme,
-    home: HomeScreen(),
+    home: CountryListScreen(),
   ));
 }

@@ -27,3 +27,43 @@ extension ColorExtension on Color {
     return int.parse(hexColor, radix: 16);
   }
 }
+
+extension ImageExtension on Image {
+
+  static Image drawerMenu = Image.asset("assets/images/ic_drawer_menu.png");
+  static Image drawerMenuGrey = Image.asset("assets/images/ic_drawer_grey.png");
+  static Image appIconWhite = Image.asset("assets/images/app_icon_white.png");
+  static Image downArrowGreen = Image.asset("assets/images/ic_down_arrow_green.png");
+  static Image upArrowRed = Image.asset("assets/images/ic_up_arrow_red.png");
+  static Image appIconRed = Image.asset("assets/images/app_icon_red.png");
+}
+
+extension AppBarExtension on AppBar {
+
+  static AppBar getAppBar({BuildContext context, Color bgColor}) {
+    double _leftRightPadding = MediaQuery.of(context).size.width * 0.07;
+    final Image drawerMenuImage = bgColor == ColorExtension.appRed ? ImageExtension.drawerMenu : ImageExtension.drawerMenuGrey;
+    final Image appIconImage = bgColor == ColorExtension.appRed ? ImageExtension.appIconWhite : ImageExtension.appIconRed;
+    return AppBar(
+      bottomOpacity: 0,
+      elevation: 0,
+      backgroundColor: bgColor,
+      leading: MaterialButton(
+        padding: EdgeInsets.only(left: _leftRightPadding),
+        child: drawerMenuImage,
+        onPressed: () {
+          print("drawer button pressed");
+        },
+      ),
+      actions: <Widget>[
+        Container(
+          width: 30,
+          height: 21,
+          child: appIconImage,
+        ),
+        SizedBox(width: _leftRightPadding)
+      ],
+    );
+  }
+
+}
